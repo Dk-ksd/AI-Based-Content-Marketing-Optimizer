@@ -64,7 +64,7 @@ TONE_STYLES = {
 }
 
 
-#3. CALL-TO-ACTION (CTA) PRESTS
+# 3. CALL-TO-ACTION (CTA) PRESTS
 
 CTA_OPTIONS = [
     "Click to learn more!",
@@ -78,7 +78,7 @@ CTA_OPTIONS = [
 
 
 def choose_cta(audience: str) -> str:
-    """Choose a CTA based on audience."""
+    """Choose a CTA based on audience context."""
     if "marketers" in audience.lower():
         return "Follow for more marketing insights!"
     if "students" in audience.lower():
@@ -98,7 +98,7 @@ def generate_engaging_prompt(
     tone: str = "positive", 
     word_count: int = 50, # 50 default
     trends: List[str] = None, 
-    # add_cta: bool = True
+    add_cta: bool = True
 ) -> str:
     """
     Build a highly adaptive AI prompt for content generation.
@@ -117,7 +117,7 @@ def generate_engaging_prompt(
     combined_keywords_str = ", ".join(set(combined_keywords))
 
     # CTA
-    # cta_text = choose_cta(audience) if add_cta else ""
+    cta_text = choose_cta(audience) if add_cta else ""
 
     prompt = f"""
 You are a top-tier social media content creator.

@@ -22,10 +22,6 @@ python run.py
 import logging
 import pandas as pd
 
-# ---------------------------
-# IMPORT UPDATED MODULES
-# ---------------------------
-
 from app.content_engine.content_generator import generate_final_variations
 from app.sentiment_engine.sentiment_analyzer import analyze_sentiment
 from app.content_engine.trend_based_optimizer import TrendBasedOptimizer
@@ -48,7 +44,6 @@ logger = logging.getLogger("RUN-PIPELINE")
 logging.basicConfig(level=logging.INFO)
 
 
-# -----------------------------------------------------------
 # PIPELINE RUNNER
 # -----------------------------------------------------------
 def run_pipeline():
@@ -56,7 +51,7 @@ def run_pipeline():
     logger.info("🚀 Starting AI Marketing Workflow")
     logger.info("==============================")
 
-    # --------------------------------------
+
     # STEP 1: CONTENT GENERATION
     # --------------------------------------
     logger.info("\n[1] Generating content variations...")
@@ -73,7 +68,7 @@ def run_pipeline():
     for i, v in enumerate(variations, 1):
         logger.info(f"\n--- Variant {i} ---\n{v['text']}\n")
 
-    # --------------------------------------
+
     # STEP 2: TREND OPTIMIZATION
     # --------------------------------------
     logger.info("\n[2] Applying Trend Optimization...")
@@ -82,7 +77,7 @@ def run_pipeline():
         out = optimizer.run(v["text"])
         optimized.append(out)
 
-    # --------------------------------------
+
     # STEP 3: SENTIMENT ANALYSIS
     # --------------------------------------
     logger.info("\n[3] Running Sentiment Analysis...")
@@ -114,7 +109,7 @@ def run_pipeline():
         "dominant_emotion": "joy",
     })
 
-    # --------------------------------------
+
     # STEP 4: A/B TEST (SIMPLE VERSION)
     # --------------------------------------
     logger.info("\n[4] Running A/B Comparison (Simple)...")
@@ -141,7 +136,7 @@ def run_pipeline():
         trend_score=50.0
     )
 
-    # --------------------------------------
+
     # STEP 5: PUSH DAILY METRICS TO SHEETS
     # --------------------------------------
     logger.info("\n[5] Pushing Metrics to Google Sheets...")
@@ -160,7 +155,7 @@ def run_pipeline():
 
     push_daily_metrics(df)
 
-    # --------------------------------------
+
     # STEP 6: AUTO RETRAIN MODEL
     # --------------------------------------
     logger.info("\n[6] Training ML Model (Auto Retrainer)...")
@@ -170,7 +165,7 @@ def run_pipeline():
     except Exception as e:
         logger.error(f"Auto Retrainer failed: {e}")
 
-    # --------------------------------------
+
     # STEP 7: SLACK SUMMARY
     # --------------------------------------
     logger.info("\n[7] Sending Slack Summary...")
@@ -183,8 +178,6 @@ def run_pipeline():
     logger.info("\n🎉 FULL WORKFLOW COMPLETED SUCCESSFULLY 🎉")
 
 
-# -----------------------------------------------------------
-# Main
-# -----------------------------------------------------------
+
 if __name__ == "__main__":
     run_pipeline()

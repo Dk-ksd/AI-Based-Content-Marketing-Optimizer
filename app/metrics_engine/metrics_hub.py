@@ -1,4 +1,3 @@
-# metrics_hub.py (UPDATED — integrated with social ingestion, trends, sentiment, and Sheets)
 """
 Metrics Hub — updated to integrate:
  - SocialIngestor (live metrics)
@@ -68,7 +67,7 @@ from app.sentiment_engine.sentiment_analyzer import analyze_sentiment, analyze_p
 # Environment flag for Sheets usage
 GOOGLE_SHEET_ENABLED = bool(os.getenv("GOOGLE_SHEET_ID")) and SHEETS_AVAILABLE
 
-# -----------------------------------------------------------
+
 # Initialize CSVs with schema if missing
 # -----------------------------------------------------------
 
@@ -88,7 +87,7 @@ _init_file(HISTORICAL_CSV, [
     "polarity", "conversions", "trend_score"
 ])
 
-# -----------------------------------------------------------
+
 # Core API: Record Campaign / Variant Metrics
 # -----------------------------------------------------------
 
@@ -182,7 +181,7 @@ def record_campaign_metrics(
             logger.warning(f"Failed to append campaign to Sheets: {e}")
 
 
-# -----------------------------------------------------------
+
 # New helper: Record metrics by fetching a live post id
 # -----------------------------------------------------------
 
@@ -254,7 +253,6 @@ def record_post_metrics_from_id(campaign_id: str, variant: str, post_id: str, pl
         logger.error(f"Failed to fetch or record metrics for post {post_id}: {e}")
 
 
-# -----------------------------------------------------------
 # Fetch & Query Utilities (kept from previous version)
 # -----------------------------------------------------------
 
@@ -313,7 +311,7 @@ def get_ml_training_data() -> pd.DataFrame:
         return pd.DataFrame()
 
 
-# -----------------------------------------------------------
+
 # Feature Engineering Utilities
 # -----------------------------------------------------------
 
@@ -344,9 +342,7 @@ def compute_variant_score(row: Dict[str, Any]) -> float:
         return 0.0
 
 
-# -----------------------------------------------------------
-# Manual test / demo
-# -----------------------------------------------------------
+
 if __name__ == "__main__":
     print("\nMetrics Hub v2 demo\n")
 

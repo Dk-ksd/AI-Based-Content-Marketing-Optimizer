@@ -1,15 +1,7 @@
-# trend_fetcher.py
-# -------------------------------------------------------------
-# Open-Source / Free Trend Data Fetching Module
-# -------------------------------------------------------------
-# This module provides trend data WITHOUT using paid APIs.
-# All data sources are 100% free, open-source, or freemium.
-#
 # Trend Sources Used:
 # 1. Google Trends (PyTrends - Free)
 # 2. Reddit Trending Topics (PRAW - Free with basic API keys)
 # 3. Keyword Extraction using spaCy (Open-source)
-# -------------------------------------------------------------
 
 import os
 import logging
@@ -65,7 +57,7 @@ class TrendFetcher:
             logging.warning("spaCy model not found. Run: python -m spacy download en_core_web_sm")
             self.nlp = None
 
-    # -------------------------------------------------------------
+
     #   1. Extract Keywords from Text
     # -------------------------------------------------------------
     def extract_keywords(self, text: str) -> List[str]:
@@ -84,7 +76,7 @@ class TrendFetcher:
 
         return list(set(keywords))[:5]  # limit to top 5
 
-    # -------------------------------------------------------------
+
     #   2. Google Trends Score (Free)
     # -------------------------------------------------------------
     def fetch_google_trend_score(self, keyword: str) -> int:
@@ -103,7 +95,7 @@ class TrendFetcher:
         except Exception:
             return 0
 
-    # -------------------------------------------------------------
+
     #   3. Google Rising Related Queries (Free)
     # -------------------------------------------------------------
     def fetch_google_rising_queries(self, keyword: str) -> List[str]:
@@ -122,7 +114,7 @@ class TrendFetcher:
         except Exception:
             return []
 
-    # -------------------------------------------------------------
+
     #   4. Global Trending Searches (Free)
     # -------------------------------------------------------------
     def fetch_google_global_trends(self) -> List[str]:
@@ -134,7 +126,7 @@ class TrendFetcher:
         except Exception:
             return []
 
-    # -------------------------------------------------------------
+    
     #   5. Reddit Hot Topics (Free)
     # -------------------------------------------------------------
     def fetch_reddit_trending(self, subreddit: str = "all") -> List[str]:
@@ -146,7 +138,7 @@ class TrendFetcher:
         except Exception:
             return []
 
-    # -------------------------------------------------------------
+    
     #   6. Normalize to 0 - 100 Trend Score
     # -------------------------------------------------------------
     def normalize_score(self, value: int) -> int:
@@ -157,7 +149,7 @@ class TrendFetcher:
         except Exception:
             return 0
 
-    # -------------------------------------------------------------
+
     #   7. Combined Trend Score for Any Content
     # -------------------------------------------------------------
     def get_combined_trend_score(self, text: str) -> int:
@@ -176,7 +168,7 @@ class TrendFetcher:
         avg_score = sum(scores) / len(scores)
         return self.normalize_score(avg_score)
 
-    # -------------------------------------------------------------
+    
     #   8. Fetch Suggestions for Content Optimization
     # -------------------------------------------------------------
     def get_trend_insights(self, text: str) -> Dict[str, Any]:
@@ -191,9 +183,7 @@ class TrendFetcher:
         return insights
 
 
-# -------------------------------------------------------------
-# Example usage (for your students)
-# -------------------------------------------------------------
+
 if __name__ == "__main__":
     tf = TrendFetcher()
     sample_text = "AI marketing automation for small business growth"

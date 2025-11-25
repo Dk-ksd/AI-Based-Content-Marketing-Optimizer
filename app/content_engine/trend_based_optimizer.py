@@ -1,4 +1,3 @@
-# trend_based_optimizer.py (UPDATED FULL VERSION)
 import logging
 from datetime import datetime
 
@@ -34,7 +33,7 @@ class TrendBasedOptimizer:
         logger.info("Initializing TrendBasedOptimizer with TrendFetcher...")
         self.fetcher = TrendFetcher()
 
-    # ----------------------------------------------------------------------
+
     # Generate Trend Score + Insights for a given content text
     # ----------------------------------------------------------------------
     def analyze_trends(self, text: str):
@@ -48,7 +47,7 @@ class TrendBasedOptimizer:
 
         return trend_score, insights
 
-    # ----------------------------------------------------------------------
+
     # Core Optimization Logic
     # ----------------------------------------------------------------------
     def optimize_content(self, original_text: str) -> dict:
@@ -74,8 +73,8 @@ class TrendBasedOptimizer:
             if rising:
                 rising_phrases.extend(rising)
 
-        # --------------------------------------------------------
-        # Apply optimization (Simple, explainable for students)
+
+        # Apply optimization 
         # --------------------------------------------------------
         optimized_text = original_text
 
@@ -114,7 +113,7 @@ class TrendBasedOptimizer:
             "insights": insights
         }
 
-    # ----------------------------------------------------------------------
+
     # Public Entry Point
     # ----------------------------------------------------------------------
     def run(self, text: str):
@@ -124,9 +123,7 @@ class TrendBasedOptimizer:
         return self.optimize_content(text)
 
 
-# ----------------------------------------------------------------------
-# Developer Test (Keep for your students)
-# ----------------------------------------------------------------------
+
 if __name__ == "__main__":
     sample_text = "AI marketing automation tool to boost business growth"
 

@@ -47,9 +47,8 @@ from imblearn.over_sampling import SMOTE
 from app.metrics_engine.metrics_hub import get_ml_training_data
 
 
-# ================================================================
 # Logging setup
-# ================================================================
+# -----------------------
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -59,9 +58,9 @@ if not logger.handlers:
     logger.addHandler(h)
 
 
-# ================================================================
+
 # MODEL OUTPUT PATHS
-# ================================================================
+# -----------------------
 
 MODEL_DIR = "models"
 os.makedirs(MODEL_DIR, exist_ok=True)
@@ -69,9 +68,8 @@ os.makedirs(MODEL_DIR, exist_ok=True)
 LATEST_MODEL_PATH = os.path.join(MODEL_DIR, "predictor.joblib")
 
 
-# ================================================================
 # SUCCESS LABELING
-# ================================================================
+# -----------------------
 
 def compute_success_label(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -97,9 +95,8 @@ def compute_success_label(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ================================================================
 # FEATURE ENGINEERING
-# ================================================================
+# -----------------------
 
 def feature_engineer(df: pd.DataFrame) -> pd.DataFrame:
     """
@@ -126,9 +123,8 @@ def feature_engineer(df: pd.DataFrame) -> pd.DataFrame:
     return features
 
 
-# ================================================================
 # TRAIN FUNCTION
-# ================================================================
+# -----------------------
 
 def train():
     logger.info("Loading ML training dataset...")
@@ -228,9 +224,6 @@ def train():
     }
 
 
-# ================================================================
-# RUN MANUALLY
-# ================================================================
 
 if __name__ == "__main__":
     results = train()

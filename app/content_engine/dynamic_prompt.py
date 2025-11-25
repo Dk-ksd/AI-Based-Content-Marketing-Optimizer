@@ -1,5 +1,4 @@
 """
-Improved dynamic_prompt3.py
 
 Upgrades added:
 - Platform-specific content rules (Twitter, LinkedIn, Instagram, YouTube, Facebook)
@@ -152,9 +151,6 @@ Now generate the final post:
     return prompt.strip()
 
 
-# ----------------------------------------
-# 5. TEST RUN
-# ----------------------------------------
 
 if __name__ == "__main__":
     prompt = generate_engaging_prompt(

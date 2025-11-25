@@ -1,12 +1,3 @@
-# slack_notifier.py (WEBHOOK-ONLY VERSION)
-"""
-SlackNotifier — Webhook-Only Version
-
-Requirements:
-------------
-- SLACK_WEBHOOK_URL must be present in .env
-"""
-
 import os
 import json
 import requests
@@ -21,10 +12,6 @@ if not logger.handlers:
 
 
 class SlackNotifier:
-    """
-    Sends messages to Slack using Webhook URL.
-    If no webhook is configured, it safely does nothing.
-    """
 
     def __init__(self):
         self.webhook_url = os.getenv("SLACK_WEBHOOK_URL")
@@ -36,7 +23,7 @@ class SlackNotifier:
 
         logger.info(f"SlackNotifier initialized (mode = {self.mode})")
 
-    # ------------------------------------------------------
+
     # Public method to send Slack message
     # ------------------------------------------------------
     def send_message(self, message: str) -> bool:
@@ -72,9 +59,7 @@ class SlackNotifier:
             return False
 
 
-# ------------------------------------------------------
-# Manual Test (optional)
-# ------------------------------------------------------
+
 if __name__ == "__main__":
     notifier = SlackNotifier()
     notifier.send_message("Test message from Webhook-Only SlackNotifier 🚀")

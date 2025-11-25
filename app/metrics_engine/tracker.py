@@ -1,6 +1,3 @@
-# ============================================================
-# tracker.py  (UPDATED FULL VERSION)
-# ============================================================
 """
 Tracker — Central Logging Layer
 
@@ -42,9 +39,10 @@ if not logger.handlers:
 tf = TrendFetcher()
 
 
-# ============================================================
+
 # 1. RAW FEEDBACK LOGGER
-# ============================================================
+# -----------------------
+
 
 def push_raw_feedback(items: List[Dict[str, Any]]):
     """
@@ -86,9 +84,9 @@ def push_raw_feedback(items: List[Dict[str, Any]]):
     return True
 
 
-# ============================================================
+
 # 2. PUSH AGGREGATE METRICS
-# ============================================================
+# -------------------------
 
 def push_aggregates(metrics: Dict[str, Any]):
     """
@@ -127,9 +125,9 @@ def push_aggregates(metrics: Dict[str, Any]):
     return True
 
 
-# ============================================================
-# 3. PUSH A/B TEST RESULTS (Simple Version)
-# ============================================================
+# 3. PUSH A/B TEST RESULTS
+# ------------------------
+
 
 def push_ab_test_results(campaign_id: str, results: List[Dict]):
     """
@@ -166,9 +164,8 @@ def push_ab_test_results(campaign_id: str, results: List[Dict]):
     return True
 
 
-# ============================================================
 # 4. CAMPAIGN EVENTS LOGGER
-# ============================================================
+# -------------------------
 
 def log_campaign_event(event: str, info: Dict[str, Any]):
     """
@@ -191,9 +188,7 @@ def log_campaign_event(event: str, info: Dict[str, Any]):
     return True
 
 
-# ============================================================
-# Manual Test
-# ============================================================
+
 
 if __name__ == "__main__":
     print("\nTracker updated version test.")

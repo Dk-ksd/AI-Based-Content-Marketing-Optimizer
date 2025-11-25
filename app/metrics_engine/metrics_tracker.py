@@ -1,4 +1,3 @@
-# metrics_tracker.py (UPDATED)
 """
 Updated metrics_tracker.py
 
@@ -45,7 +44,7 @@ _ingestor = SocialIngestor()
 _trends = TrendFetcher()
 
 
-# -----------------------------
+
 # Helper: safe average
 # -----------------------------
 def _safe_mean(values: List[float]) -> float:
@@ -55,7 +54,7 @@ def _safe_mean(values: List[float]) -> float:
     return float(sum(vals) / len(vals))
 
 
-# -----------------------------
+
 # 1) Fetch and aggregate live metrics from a list of post IDs
 # -----------------------------
 def fetch_and_aggregate_post_metrics(post_ids: List[str]) -> Dict[str, Any]:
@@ -120,7 +119,7 @@ def fetch_and_aggregate_post_metrics(post_ids: List[str]) -> Dict[str, Any]:
     return agg
 
 
-# -----------------------------
+
 # 2) Compute metrics from DataFrame
 # -----------------------------
 def compute_metrics_from_df(df: pd.DataFrame) -> Dict[str, Any]:
@@ -206,7 +205,7 @@ def compute_metrics_from_df(df: pd.DataFrame) -> Dict[str, Any]:
     return metrics
 
 
-# -----------------------------
+
 # 3) Update Google Sheet (via sheets_connector.append_row)
 # -----------------------------
 def update_google_sheet(sheet_name: str, df: Optional[pd.DataFrame]) -> Optional[Dict[str, Any]]:
@@ -253,7 +252,7 @@ def update_google_sheet(sheet_name: str, df: Optional[pd.DataFrame]) -> Optional
     return metrics
 
 
-# -----------------------------
+
 # 4) Public wrapper used by pipeline
 # -----------------------------
 def push_daily_metrics(df: Optional[pd.DataFrame] = None, sheet_name: str = DEFAULT_SHEET_NAME) -> Optional[Dict[str, Any]]:
@@ -277,7 +276,7 @@ def push_daily_metrics(df: Optional[pd.DataFrame] = None, sheet_name: str = DEFA
     return update_google_sheet(sheet_name, df)
 
 
-# -----------------------------
+
 # 5) CLI / quick test helper
 # -----------------------------
 if __name__ == "__main__":

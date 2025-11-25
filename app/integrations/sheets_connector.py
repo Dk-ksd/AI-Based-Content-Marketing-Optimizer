@@ -7,20 +7,12 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 
-# -----------------------------------------------------------
-# Google Sheets Connector Module
-# -----------------------------------------------------------
-# Purpose:
-#   - Unified wrapper for all Google Sheets interactions
-#   - Used by metrics tracker, AB coach, run.py, etc.
-# -----------------------------------------------------------
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 SHEET_ID = os.getenv("GOOGLE_SHEET_ID")
 CREDENTIALS_FILE = "credentials/service_account.json"
 
 
-# ---------------------------------------------
 # Load Credentials
 # ---------------------------------------------
 from google.oauth2.service_account import Credentials as ServiceAccountCredentials
@@ -37,7 +29,6 @@ def load_credentials():
     return creds
 
 
-# ---------------------------------------------
 # Google Sheets Service
 # ---------------------------------------------
 def get_service():
@@ -51,7 +42,6 @@ def get_service():
         raise
 
 
-# ---------------------------------------------
 # Ensure Sheet Exists
 # ---------------------------------------------
 def create_sheet_if_not_exists(sheet_name: str) -> None:
@@ -149,7 +139,6 @@ def _add_headers_to_sheet(service, sheet_name: str):
     logging.info(f"Headers added to sheet: {sheet_name}")
 
 
-# ---------------------------------------------
 # Append Row
 # ---------------------------------------------
 def append_row(sheet_name: str, row_data: List[Any]) -> None:
@@ -172,7 +161,6 @@ def append_row(sheet_name: str, row_data: List[Any]) -> None:
         raise
 
 
-# ---------------------------------------------
 # Read Rows
 # ---------------------------------------------
 def read_rows(sheet_name: str) -> List[List[Any]]:
@@ -191,7 +179,7 @@ def read_rows(sheet_name: str) -> List[List[Any]]:
         raise
 
 
-# ---------------------------------------------
+
 # Update Row
 # ---------------------------------------------
 def update_row(sheet_name: str, row_index: int, row_data: List[Any]) -> None:
@@ -214,7 +202,6 @@ def update_row(sheet_name: str, row_index: int, row_data: List[Any]) -> None:
         raise
 
 
-# ---------------------------------------------
 # Find Row by Keyword
 # ---------------------------------------------
 def find_row(sheet_name: str, keyword: str) -> Optional[int]:

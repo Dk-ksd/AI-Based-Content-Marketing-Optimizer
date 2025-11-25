@@ -51,7 +51,7 @@ class AutoRetrainer:
 
         logger.info("AutoRetrainer initialized.")
 
-    # --------------------------------------------------------------
+
     # 1. LOAD TRAINING DATA FROM GOOGLE SHEETS
     # --------------------------------------------------------------
     def load_training_data(self) -> pd.DataFrame:
@@ -75,7 +75,7 @@ class AutoRetrainer:
 
         return df
 
-    # --------------------------------------------------------------
+
     # 2. PREPROCESSING PIPELINE
     # --------------------------------------------------------------
     def preprocess_data(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -127,7 +127,7 @@ class AutoRetrainer:
 
         return pd.DataFrame(processed_rows)
 
-    # --------------------------------------------------------------
+
     # 3. CHECK IF WE HAVE ENOUGH NEW DATA
     # --------------------------------------------------------------
     def check_threshold(self, df: pd.DataFrame) -> bool:
@@ -140,7 +140,7 @@ class AutoRetrainer:
         logger.info(f"Not enough data for retraining: {len(df)}/{threshold}")
         return False
 
-    # --------------------------------------------------------------
+
     # 4. RETRAIN MODEL
     # --------------------------------------------------------------
     def retrain(self, df: pd.DataFrame):
@@ -157,7 +157,7 @@ class AutoRetrainer:
         model = train(X, y)
         return model
 
-    # --------------------------------------------------------------
+
     # 5. SAVE MODEL VERSION
     # --------------------------------------------------------------
     def save_model(self, model, df: pd.DataFrame):
@@ -174,7 +174,7 @@ class AutoRetrainer:
         logger.info(f"New model saved: {path}")
         return path
 
-    # --------------------------------------------------------------
+
     # 6. SLACK NOTIFICATION
     # --------------------------------------------------------------
     def notify_slack(self, path: str, dfsize: int):
@@ -185,7 +185,7 @@ class AutoRetrainer:
         except Exception:
             pass
 
-    # --------------------------------------------------------------
+
     # 7. FULL RETRAINING CYCLE
     # --------------------------------------------------------------
     def run_full_cycle(self):
@@ -210,7 +210,7 @@ class AutoRetrainer:
         logger.info("Retraining cycle complete.")
 
 
-    # --------------------------------------------------------------
+
     # Simple run() wrapper for the pipeline
     # --------------------------------------------------------------
     def run(self):
@@ -226,7 +226,7 @@ class AutoRetrainer:
             raise
 
 
-    # --------------------------------------------------------------
+
     # 8. SCHEDULE AUTOMATIC RETRAINING
     # --------------------------------------------------------------
     def schedule_retraining(self, interval_hours: int = 24):
@@ -239,9 +239,7 @@ class AutoRetrainer:
         logger.info(f"Auto-retraining scheduled every {interval_hours} hours.")
 
 
-# --------------------------------------------------------------
-# Developer Test
-# --------------------------------------------------------------
+
 if __name__ == "__main__":
     retr = AutoRetrainer()
     retr.run_full_cycle()  # manual test

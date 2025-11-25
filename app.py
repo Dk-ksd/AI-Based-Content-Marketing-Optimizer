@@ -33,7 +33,7 @@ if ABCoach is None:
 if "sentiment_output" not in st.session_state:
     st.session_state["sentiment_output"] = None
 
-# ----------------------------
+
 # Streamlit layout
 # ----------------------------
 st.set_page_config(page_title="AI Content Marketing Optimizer", layout="wide")
@@ -126,7 +126,7 @@ st.title("AI Content Marketing Optimizer — Dashboard")
 
 tabs = st.tabs(["🚀 Content Generator (Trend-Based)", "💬 Sentiment Engine", "🆚 Performance Comparison (A/B Test)", "⚒️ Model Training & Metrics Hub", "🔔 Slack Notifications"])
 
-# ----------------------------
+
 # Generate Tab
 # ----------------------------
 with tabs[0]:
@@ -237,7 +237,6 @@ with tabs[1]:
 
 
 
-# ----------------------------
 # A/B Test Tab (Simple)
 # ----------------------------
 with tabs[2]:
@@ -351,7 +350,6 @@ with tabs[2]:
 
 
 
-# ----------------------------
 # Metrics & Model Tab
 # ----------------------------
 with tabs[3]:
@@ -434,7 +432,7 @@ with tabs[3]:
     except Exception as e:
         st.error(f"Error fetching recent metrics: {e}")
 
-# ----------------------------
+
 # Slack Tab
 # ----------------------------
 with tabs[4]:
@@ -455,7 +453,7 @@ with tabs[4]:
 
     st.write("---")
 
-# ----------------------------
+
 # Footer
 # ----------------------------
 st.write("---")

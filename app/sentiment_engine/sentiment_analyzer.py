@@ -1,7 +1,4 @@
-# sentiment_analyzer.py (UPDATED FULL VERSION)
 """
-Advanced sentiment_analyzer.py
-
 Upgraded with:
 ---------------------------------
 1. Real social comment ingestion via SocialIngestor
@@ -44,7 +41,6 @@ _senti_model = None
 _emotion_model = None
 
 
-# ------------------------------------------------------
 # Initialize Models
 # ------------------------------------------------------
 def _init_sentiment_model():
@@ -58,7 +54,6 @@ def _init_emotion_model():
     )
 
 
-# ------------------------------------------------------
 # Utilities
 # ------------------------------------------------------
 def detect_language(text: str) -> str:
@@ -90,7 +85,7 @@ def simplify_emotion_output(raw_output: List[Dict]) -> Dict:
     return {x["label"]: float(x["score"]) for x in raw_output}
 
 
-# ------------------------------------------------------
+
 # NEW FEATURE: Analyze sentiment of *live social comments*
 # ------------------------------------------------------
 def analyze_post_comments(post_id: str) -> Dict:
@@ -149,7 +144,7 @@ def analyze_post_comments(post_id: str) -> Dict:
     }
 
 
-# ------------------------------------------------------
+
 # MASTER FUNCTION — sentiment + emotion + trend awareness
 # ------------------------------------------------------
 def analyze_sentiment(texts: Union[str, List[str]]) -> List[Dict]:
@@ -242,7 +237,7 @@ def analyze_sentiment(texts: Union[str, List[str]]) -> List[Dict]:
     return results
 
 
-# ------------------------------------------------------
+
 # DataFrame helper
 # ------------------------------------------------------
 def analyze_from_dataframe(df, text_column: str):
@@ -261,9 +256,6 @@ def analyze_from_dataframe(df, text_column: str):
     return df
 
 
-# ------------------------------------------------------
-# Test Run
-# ------------------------------------------------------
 if __name__ == "__main__":
     sample = [
         "I absolutely love this AI tool!",

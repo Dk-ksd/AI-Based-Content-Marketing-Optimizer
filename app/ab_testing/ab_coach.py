@@ -1,8 +1,3 @@
-# ab_coach.py
-"""
-A/B Testing
-"""
-
 import os
 import time
 import joblib
@@ -58,7 +53,7 @@ class ABCoach:
         self.slack = SlackNotifier() if 'SlackNotifier' in globals() and SlackNotifier is not None else None
         self.model = _load_latest_model()
 
-    # -----------------------
+    
     # Utilities
     # -----------------------
     @staticmethod
@@ -90,7 +85,7 @@ class ABCoach:
         except Exception as e:
             logger.warning(f"Failed to write ab_test_results row: {e}")
 
-    # -----------------------
+    
     # Create & Schedule A/B test
     # -----------------------
     def create_and_schedule_ab_test(
@@ -136,7 +131,7 @@ class ABCoach:
 
         return details
 
-    # -----------------------
+
     # Predict success probability for text variant
     # -----------------------
     def predict_success(self, text: str) -> float:
@@ -179,7 +174,7 @@ class ABCoach:
             logger.error(f"predict_success error: {e}")
             return 0.5
 
-    # -----------------------
+    
     # Manual evaluation (can be called by scheduler or manually)
     # -----------------------
     def evaluate_ab_test(self, ab_id: str) -> Optional[Dict[str, Any]]:
@@ -270,7 +265,7 @@ class ABCoach:
         logger.info(f"A/B evaluation complete: {result}")
         return result
 
-    # -----------------------
+    
     # Manual re-evaluate (useful for debugging)
     # -----------------------
     def reevaluate_recent(self, lookback_hours: int = 24) -> List[Dict[str, Any]]:
@@ -304,7 +299,7 @@ class ABCoach:
 
         return results
 
-    # -----------------------
+    
     # Query history / cancel
     # -----------------------
     def list_scheduled_ab_tests(self) -> List[Dict[str, Any]]:
@@ -326,7 +321,7 @@ class ABCoach:
         """
         return self.poster.cancel_job(job_id)
 
-    # -----------------------
+    
     # Utility: run a quick simulation (no posting) used before scheduling
     # -----------------------
     def simulate_ab(self, textA, textB):

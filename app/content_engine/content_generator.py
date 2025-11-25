@@ -1,7 +1,3 @@
-# ============================================================
-# content_generator.py (UPDATED FULL VERSION)
-# ============================================================
-
 import os
 import logging
 from typing import List, Dict, Optional
@@ -56,17 +52,15 @@ if not logger.handlers:
     logger.addHandler(ch)
 
 
-# ============================================================
 # Local fallback
-# ============================================================
+# -----------------------
 
 def _local_generate(prompt: str, n: int = 3) -> List[str]:
     return [f"{prompt} — variant {i+1}" for i in range(n)]
 
 
-# ============================================================
 # LLM Call Helpers
-# ============================================================
+# -----------------------
 
 def _call_groq(prompt: str, model: str = None) -> str:
     client = Groq(api_key=os.getenv("GROQ_API_KEY"))
@@ -90,9 +84,8 @@ def _call_gemini(prompt: str, model: str = None) -> str:
     return response.text if hasattr(response, "text") else str(response)
 
 
-# ============================================================
 # Main LLM generation function
-# ============================================================
+# ----------------------------
 
 def generate_variations(prompt: str, n: int = 2) -> List[str]:
     """
@@ -119,9 +112,8 @@ def generate_variations(prompt: str, n: int = 2) -> List[str]:
     return _local_generate(prompt, n)
 
 
-# ============================================================
 # Quality scoring (readability + grammar)
-# ============================================================
+# ---------------------------------------
 
 def score_quality(text: str) -> Dict:
     readability_score = None
@@ -147,9 +139,8 @@ def score_quality(text: str) -> Dict:
     }
 
 
-# ============================================================
 # Hashtag Cleaning Utilities
-# ============================================================
+# --------------------------
 
 def clean_punctuation_hashtags(text: str) -> str:
     words = text.split()
@@ -188,9 +179,9 @@ def clean_and_order_hashtags(text: str):
     return text
 
 
-# ============================================================
 # Engagement-Aware Ranking
-# ============================================================
+# ------------------------
+
 
 def optimize_with_engagement(candidates: List[Dict], past_metrics: Optional[Dict] = None):
     top_keywords = []
@@ -221,9 +212,8 @@ def optimize_with_engagement(candidates: List[Dict], past_metrics: Optional[Dict
     return [c for _, c in scored_sorted]
 
 
-# ============================================================
 # FINAL PIPELINE — FULLY UPDATED
-# ============================================================
+# ------------------------------
 
 def generate_final_variations(
     topic: str,
@@ -309,9 +299,6 @@ def generate_final_variations(
     return results
 
 
-# ============================================================
-# Test Run
-# ============================================================
 
 if __name__ == "__main__":
     out = generate_final_variations(

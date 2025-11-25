@@ -9,4 +9,5 @@ credentials/
 models/
 *.joblib
 
-__pyache__
+__pycache__/
+*.pyc

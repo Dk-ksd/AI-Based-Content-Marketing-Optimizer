@@ -8,3 +8,5 @@ credentials/
 
 models/
 *.joblib
+
+__pyache__
